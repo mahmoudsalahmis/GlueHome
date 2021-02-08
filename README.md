@@ -22,4 +22,4 @@ You need to have GlueHome.Web as startup projects in order to run the API.
 
 ### Useful file
 
-You can export GlueHome.postman_collection to your postman to see how the back end api organized:
+You can import GlueHome.postman_collection to your postman to see how the back end api organized:
