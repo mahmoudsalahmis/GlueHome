@@ -1,4 +1,5 @@
-﻿using GlueHome.Application.Deliveries.Commands.CreateDelivery;
+﻿using GlueHome.Application.Deliveries.Commands.UpdateDeliveryStatus;
+using GlueHome.Application.Deliveries.Commands.CreateDelivery;
 using GlueHome.Application.Deliveries.Commands.DeleteDelivery;
 using GlueHome.Application.Deliveries.Commands.UpdateDelivery;
 using GlueHome.Application.Deliveries.Queries.GetDeliveryById;
@@ -24,6 +25,7 @@ namespace GlueHome.IoC
             services.TryAddScoped<IUpdateDeliveryRepository, UpdateDeliveryRepository>();
             services.TryAddScoped<IGetDeliveryByIdRepository, GetDeliveryByIdRepository>();
             services.TryAddScoped<IDeleteDeliveryRepository, DeleteDeliveryRepository>();
+            services.TryAddScoped<IUpdateDeliveryStatusRepository, UpdateDeliveryStatusRepository>();
         }
     }
 }

@@ -5,6 +5,8 @@ using GlueHome.Application.Deliveries.Queries.GetDeliveryById;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
+using GlueHome.Application.Deliveries.Commands.UpdateDeliveryStatus;
+using GlueHome.Domain.Enums;
 
 namespace GlueHome.Web.Controllers
 {
@@ -40,8 +42,30 @@ namespace GlueHome.Web.Controllers
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
-        { 
+        {
             await Mediator.Send(new DeleteDeliveryCommand { Id = id });
+            return NoContent();
+        }
+
+        [HttpPut("{id}/approve")]
+        public async Task<IActionResult> Approve(Guid id)
+        {
+            await Mediator.Send(new UpdateDeliveryStatusCommand { Id = id, Status = DeliveryStatus.Approved });
+            return NoContent();
+        }
+
+
+        [HttpPut("{id}/complete")]
+        public async Task<IActionResult> Complete(Guid id)
+        {
+            await Mediator.Send(new UpdateDeliveryStatusCommand { Id = id, Status = DeliveryStatus.Completed });
+            return NoContent();
+        }
+
+        [HttpPut("{id}/cancel")]
+        public async Task<IActionResult> Cancel(Guid id)
+        {
+            await Mediator.Send(new UpdateDeliveryStatusCommand { Id = id, Status = DeliveryStatus.Cancelled });
             return NoContent();
         }
     }

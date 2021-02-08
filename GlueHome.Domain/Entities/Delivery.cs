@@ -20,11 +20,50 @@ namespace GlueHome.Domain.Entities
 
         public Order Order { get; set; }
 
+        /// <summary>
+        /// Handle updating delivery status
+        /// </summary>
+        /// <param name="newStatus">The new delivery status</param>
+        /// <exception cref="ArgumentException"></exception>
         public void UpdateDeliveryStatus(DeliveryStatus newStatus)
         {
-            if (AccessWindow.EndTime > DateTime.UtcNow)
+            switch (newStatus)
             {
-                Status = newStatus;
+                case DeliveryStatus.Created:
+                    throw new ArgumentException("Cannot Change Delivery Status to Created", nameof(Status));
+                case DeliveryStatus.Approved: //Users may approve a delivery before it starts.
+                    if (Status == DeliveryStatus.Created)
+                    {
+                        Status = newStatus;
+                    }
+                    else
+                    {
+                        throw new ArgumentException($"Cannot approve delivery with status equal to {Status}",
+                            nameof(Status));
+                    }
+                    break;
+                case DeliveryStatus.Completed: //Partner may complete a delivery, that is already in approved state.
+                    if (Status == DeliveryStatus.Approved)
+                    {
+                        Status = newStatus;
+                    }
+                    else
+                    {
+                        throw new ArgumentException($"Cannot complete delivery with status equal to {Status}",
+                            nameof(Status));
+                    }
+                    break;
+                case DeliveryStatus.Cancelled: //Either the partner or the user should be able to cancel a pending delivery (in state created or approved ).
+                    if (Status == DeliveryStatus.Approved || Status == DeliveryStatus.Created)
+                    {
+                        Status = newStatus;
+                    }
+                    else
+                    {
+                        throw new ArgumentException($"Cannot cancel delivery with status equal to {Status}",
+                            nameof(Status));
+                    }
+                    break;
             }
         }
     }
