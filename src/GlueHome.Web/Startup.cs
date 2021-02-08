@@ -4,8 +4,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using GlueHome.IoC;
+using GlueHome.Persistence;
 using GlueHome.Web.Filters;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GlueHome.Web
 {
@@ -41,6 +43,15 @@ namespace GlueHome.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                //enforce migration as this is a demo application.
+                using var scope = app.ApplicationServices.CreateScope();
+                {
+                    using var context = scope.ServiceProvider.GetRequiredService<GlueHomeDbContext>();
+                    {
+                        context.Database.Migrate();
+                    }
+                }
             }
 
             app.UseHttpsRedirection();
