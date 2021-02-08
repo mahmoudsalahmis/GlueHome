@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GlueHome.Web", "GlueHome.Web\GlueHome.Web.csproj", "{8FC4758E-33AD-4309-87BE-181A5DCEB3CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GlueHome.Web", "src\GlueHome.Web\GlueHome.Web.csproj", "{8FC4758E-33AD-4309-87BE-181A5DCEB3CD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GlueHome.Application", "GlueHome.Application\GlueHome.Application.csproj", "{B99FACE4-19F6-4918-860F-0C6362F4B110}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GlueHome.Application", "src\GlueHome.Application\GlueHome.Application.csproj", "{B99FACE4-19F6-4918-860F-0C6362F4B110}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GlueHome.IoC", "GlueHome.IoC\GlueHome.IoC.csproj", "{34E4F49B-C025-4FB0-98ED-BF621E31EB7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GlueHome.IoC", "src\GlueHome.IoC\GlueHome.IoC.csproj", "{34E4F49B-C025-4FB0-98ED-BF621E31EB7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlueHome.Persistence", "GlueHome.Persistence\GlueHome.Persistence.csproj", "{9C560E2F-B65C-428F-9469-3033C242F342}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GlueHome.Persistence", "src\GlueHome.Persistence\GlueHome.Persistence.csproj", "{9C560E2F-B65C-428F-9469-3033C242F342}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlueHome.Domain", "GlueHome.Domain\GlueHome.Domain.csproj", "{9E8FEC41-2DF7-4A76-A013-FB69E7CBBB71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GlueHome.Domain", "src\GlueHome.Domain\GlueHome.Domain.csproj", "{9E8FEC41-2DF7-4A76-A013-FB69E7CBBB71}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B822FC46-0452-4C8B-9013-2449631C2099}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +44,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8FC4758E-33AD-4309-87BE-181A5DCEB3CD} = {B822FC46-0452-4C8B-9013-2449631C2099}
+		{B99FACE4-19F6-4918-860F-0C6362F4B110} = {B822FC46-0452-4C8B-9013-2449631C2099}
+		{34E4F49B-C025-4FB0-98ED-BF621E31EB7C} = {B822FC46-0452-4C8B-9013-2449631C2099}
+		{9C560E2F-B65C-428F-9469-3033C242F342} = {B822FC46-0452-4C8B-9013-2449631C2099}
+		{9E8FEC41-2DF7-4A76-A013-FB69E7CBBB71} = {B822FC46-0452-4C8B-9013-2449631C2099}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {45AAE8A5-D837-43D2-9A60-F0A2A337F8C8}
